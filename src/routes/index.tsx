@@ -137,8 +137,8 @@ function Index() {
       {/* Hero */}
       <section className="cabin-glow relative">
         <div className="mx-auto max-w-md px-5 pt-10 pb-14">
-          <span className="inline-flex items-center gap-2 rounded-full bg-primary/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-primary ring-1 ring-primary/30">
-            <span className="size-1.5 rounded-full bg-primary" />
+          <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-accent ring-1 ring-accent/30">
+            <span className="size-1.5 rounded-full bg-accent" />
             On call · Tromsø
           </span>
 
@@ -163,15 +163,15 @@ function Index() {
           {/* Trust strip */}
           <div className="mt-8 grid grid-cols-3 gap-2">
             <div className="metal rounded-xl px-3 py-3 ring-1 ring-border">
-              <p className="font-display text-xl font-semibold text-primary">12+</p>
+              <p className="font-display text-xl font-semibold text-accent">12+</p>
               <p className="mt-0.5 text-[11px] text-muted-foreground">years on the road</p>
             </div>
             <div className="metal rounded-xl px-3 py-3 ring-1 ring-border">
-              <p className="font-display text-xl font-semibold text-primary">80km</p>
+              <p className="font-display text-xl font-semibold text-accent">80km</p>
               <p className="mt-0.5 text-[11px] text-muted-foreground">service radius</p>
             </div>
             <div className="metal rounded-xl px-3 py-3 ring-1 ring-border">
-              <p className="font-display text-xl font-semibold text-primary">24/7</p>
+              <p className="font-display text-xl font-semibold text-accent">24/7</p>
               <p className="mt-0.5 text-[11px] text-muted-foreground">polar-night ready</p>
             </div>
           </div>
@@ -181,7 +181,7 @@ function Index() {
       {/* Pricing */}
       <section id="pricing" className="bg-card">
         <div className="mx-auto max-w-md px-5 py-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
             Pricing
           </p>
           <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-balance">
@@ -206,7 +206,7 @@ function Index() {
       {/* Distance calculator */}
       <section id="calculator" className="bg-background">
         <div className="mx-auto max-w-md px-5 py-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-primary">
+          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
             Travel fee
           </p>
           <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-balance">
