@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { MessageCircle, Phone, Flame, Zap } from "lucide-react";
+import { MessageCircle, Phone, Flame, Zap, MapPin, Loader2, AlertTriangle } from "lucide-react";
+import { getRoadDistance, BASE } from "@/lib/travel.functions";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -105,7 +106,41 @@ function PriceCard({
 
 function Index() {
   const [km, setKm] = useState(25);
+  const [source, setSource] = useState<"manual" | "gps">("manual");
+  const [approx, setApprox] = useState(false);
+  const [locating, setLocating] = useState(false);
+  const [locError, setLocError] = useState<string | null>(null);
   const fee = travelFee(km);
+
+  function locateMe() {
+    if (!("geolocation" in navigator)) {
+      setLocError("Your browser cannot share your location — enter the distance below instead.");
+      return;
+    }
+    setLocating(true);
+    setLocError(null);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const result = await getRoadDistance({
+            data: { lat: pos.coords.latitude, lon: pos.coords.longitude },
+          });
+          setKm(Math.min(500, Math.max(0, result.km)));
+          setSource("gps");
+          setApprox(result.approximate);
+        } catch {
+          setLocError("Could not measure the distance from your position — enter it below instead.");
+        } finally {
+          setLocating(false);
+        }
+      },
+      () => {
+        setLocating(false);
+        setLocError("Location was blocked — allow it in your browser, or enter the distance below.");
+      },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
@@ -213,33 +248,65 @@ function Index() {
             Distance calculator
           </h2>
           <p className="mt-2 text-sm text-muted-foreground text-pretty">
-            Enter the distance from Tromsø centre. The first 10 km are included,
-            then NOK {PER_KM_RATE} per km.
+            We set out from our workshop at {BASE.label}. The first 10 km are
+            included, then NOK {PER_KM_RATE} per road-kilometre.
           </p>
 
           <div className="metal mt-6 rounded-2xl p-5 ring-1 ring-border">
-            <label htmlFor="distance" className="block text-[13px] font-medium">
-              Distance from Tromsø (km)
-            </label>
-            <input
-              id="distance"
-              type="number"
-              inputMode="numeric"
-              min={0}
-              max={200}
-              value={km}
-              onChange={(e) => setKm(Math.min(200, Math.max(0, Number(e.target.value) || 0)))}
-              className="mt-3 w-full rounded-xl bg-muted px-4 py-3 font-display text-2xl font-semibold text-foreground ring-1 ring-input outline-none focus:ring-2 focus:ring-primary/60"
-            />
-            <input
-              type="range"
-              aria-label="Distance in kilometres"
-              min={0}
-              max={200}
-              value={km}
-              onChange={(e) => setKm(Number(e.target.value))}
-              className="mt-4 w-full accent-primary"
-            />
+            <button
+              type="button"
+              onClick={locateMe}
+              disabled={locating}
+              className="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-3.5 font-display text-[15px] font-semibold text-primary-foreground ring-1 ring-primary/40 transition-opacity disabled:opacity-70"
+            >
+              {locating ? (
+                <Loader2 className="size-4 animate-spin" />
+              ) : (
+                <MapPin className="size-4" />
+              )}
+              {locating ? "Finding you…" : "Use my current location"}
+            </button>
+            {locError && (
+              <p className="mt-2 flex items-start gap-1.5 text-xs text-destructive">
+                <AlertTriangle className="mt-0.5 size-3.5 shrink-0" />
+                {locError}
+              </p>
+            )}
+
+            <div className="mt-5">
+              <label htmlFor="distance" className="block text-[13px] font-medium">
+                {source === "gps"
+                  ? "Road distance from the workshop (km)"
+                  : "Or enter distance from the workshop (km)"}
+              </label>
+              <input
+                id="distance"
+                type="number"
+                inputMode="numeric"
+                min={0}
+                max={500}
+                value={km}
+                onChange={(e) => {
+                  setSource("manual");
+                  setApprox(false);
+                  setKm(Math.min(500, Math.max(0, Number(e.target.value) || 0)));
+                }}
+                className="mt-3 w-full rounded-xl bg-muted px-4 py-3 font-display text-2xl font-semibold text-foreground ring-1 ring-input outline-none focus:ring-2 focus:ring-primary/60"
+              />
+              <input
+                type="range"
+                aria-label="Distance in kilometres"
+                min={0}
+                max={200}
+                value={km}
+                onChange={(e) => {
+                  setSource("manual");
+                  setApprox(false);
+                  setKm(Number(e.target.value));
+                }}
+                className="mt-4 w-full accent-primary"
+              />
+            </div>
 
             <div className="mt-5 rounded-xl bg-primary/10 p-4 ring-1 ring-primary/25">
               <div className="flex items-end justify-between">
@@ -252,8 +319,16 @@ function Index() {
               </div>
               <p className="mt-2 text-xs text-muted-foreground">
                 First {TRAVEL_FREE_KM} km included · NOK {PER_KM_RATE} / km after
+                {source === "gps" && approx && " · road distance approximated"}
               </p>
             </div>
+
+            {source === "gps" && km > 80 && (
+              <p className="mt-3 text-xs text-accent">
+                That is beyond our usual 80 km service radius — message us to
+                confirm we can come.
+              </p>
+            )}
           </div>
         </div>
       </section>
