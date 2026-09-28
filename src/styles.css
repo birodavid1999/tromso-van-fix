@@ -5,11 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — "Headlamp Polar Night", softened to warm cabin light.
+ * Design system — "Forest & Lantern".
  *
- * Deep warm-charcoal night surfaces, amber cabin-glow primary, cream text.
- * The @theme inline block maps CSS custom properties to Tailwind utilities
- * (e.g. --color-primary -> bg-primary, text-primary). All colors in oklch.
+ * Deep brown night surfaces (forest soil), bright lantern-yellow primary,
+ * pine-green accent, cream text. The @theme inline block maps CSS custom
+ * properties to Tailwind utilities (e.g. --color-primary -> bg-primary,
+ * text-primary). All colors in oklch.
  */
 
 @theme inline {
@@ -45,25 +46,25 @@
 
 :root {
   --radius: 1rem;
-  --background: oklch(0.165 0.013 60);
-  --foreground: oklch(0.93 0.025 85);
-  --card: oklch(0.205 0.016 62);
-  --card-foreground: oklch(0.93 0.025 85);
-  --popover: oklch(0.205 0.016 62);
-  --popover-foreground: oklch(0.93 0.025 85);
-  --primary: oklch(0.82 0.15 78);
-  --primary-foreground: oklch(0.19 0.03 62);
-  --secondary: oklch(0.26 0.018 62);
-  --secondary-foreground: oklch(0.93 0.025 85);
-  --muted: oklch(0.24 0.015 62);
-  --muted-foreground: oklch(0.71 0.032 82);
-  --accent: oklch(0.74 0.155 58);
-  --accent-foreground: oklch(0.19 0.03 62);
+  --background: oklch(0.17 0.022 70);
+  --foreground: oklch(0.94 0.025 95);
+  --card: oklch(0.21 0.028 70);
+  --card-foreground: oklch(0.94 0.025 95);
+  --popover: oklch(0.21 0.028 70);
+  --popover-foreground: oklch(0.94 0.025 95);
+  --primary: oklch(0.85 0.17 95);
+  --primary-foreground: oklch(0.2 0.04 70);
+  --secondary: oklch(0.28 0.03 70);
+  --secondary-foreground: oklch(0.94 0.025 95);
+  --muted: oklch(0.25 0.026 70);
+  --muted-foreground: oklch(0.73 0.035 95);
+  --accent: oklch(0.66 0.13 148);
+  --accent-foreground: oklch(0.17 0.03 148);
   --destructive: oklch(0.577 0.245 27.325);
   --destructive-foreground: oklch(0.984 0.003 247.858);
-  --border: oklch(0.93 0.02 85 / 8%);
-  --input: oklch(0.93 0.02 85 / 12%);
-  --ring: oklch(0.82 0.15 78);
+  --border: oklch(0.94 0.025 95 / 9%);
+  --input: oklch(0.94 0.025 95 / 13%);
+  --ring: oklch(0.85 0.17 95);
 }
 
 @layer base {
