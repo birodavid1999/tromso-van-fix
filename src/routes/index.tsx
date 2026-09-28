@@ -106,7 +106,41 @@ function PriceCard({
 
 function Index() {
   const [km, setKm] = useState(25);
+  const [source, setSource] = useState<"manual" | "gps">("manual");
+  const [approx, setApprox] = useState(false);
+  const [locating, setLocating] = useState(false);
+  const [locError, setLocError] = useState<string | null>(null);
   const fee = travelFee(km);
+
+  function locateMe() {
+    if (!("geolocation" in navigator)) {
+      setLocError("Your browser cannot share your location — enter the distance below instead.");
+      return;
+    }
+    setLocating(true);
+    setLocError(null);
+    navigator.geolocation.getCurrentPosition(
+      async (pos) => {
+        try {
+          const result = await getRoadDistance({
+            data: { lat: pos.coords.latitude, lon: pos.coords.longitude },
+          });
+          setKm(Math.min(500, Math.max(0, result.km)));
+          setSource("gps");
+          setApprox(result.approximate);
+        } catch {
+          setLocError("Could not measure the distance from your position — enter it below instead.");
+        } finally {
+          setLocating(false);
+        }
+      },
+      () => {
+        setLocating(false);
+        setLocError("Location was blocked — allow it in your browser, or enter the distance below.");
+      },
+      { enableHighAccuracy: true, timeout: 12000, maximumAge: 60000 },
+    );
+  }
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
