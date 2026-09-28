@@ -292,7 +292,7 @@ function Index() {
             </a>
           </div>
 
-          <p className="mt-6 text-xs text-muted-foreground">
+          <p className="mt-6 pb-16 text-xs text-muted-foreground">
             Service area: Tromsø, Bardu, and the E6 corridor. Travel fees apply
             beyond {TRAVEL_FREE_KM} km.
           </p>
@@ -304,7 +304,7 @@ function Index() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 rounded-full bg-primary py-3 pl-4 pr-5 font-display text-[15px] font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_12px_30px_-6px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
+        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-primary py-3 pl-4 pr-5 font-display text-[15px] font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_12px_30px_-6px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
       >
         <span className="grid size-5 shrink-0 place-items-center rounded-full bg-primary-foreground/15">
           <MessageCircle className="size-3" />
