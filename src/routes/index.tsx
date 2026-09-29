@@ -214,21 +214,21 @@ function Index() {
             </p>
           </div>
 
-          {/* Trust strip */}
+          {/* Trust strip — yellow-ringed badges */}
           <div className="mt-8 grid grid-cols-3 gap-2 lg:mt-0 lg:grid-cols-1 lg:gap-4">
-            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:px-6 lg:py-5">
+            <div className="metal rounded-full px-3 py-3 ring-2 ring-primary lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:rounded-2xl lg:px-6 lg:py-5">
               <p className="font-display text-xl font-semibold text-accent lg:text-4xl">12+</p>
               <p className="mt-0.5 text-[11px] text-muted-foreground lg:mt-0 lg:text-sm">
                 years on the road
               </p>
             </div>
-            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:px-6 lg:py-5">
+            <div className="metal rounded-full px-3 py-3 ring-2 ring-primary lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:rounded-2xl lg:px-6 lg:py-5">
               <p className="font-display text-xl font-semibold text-accent lg:text-4xl">80km</p>
               <p className="mt-0.5 text-[11px] text-muted-foreground lg:mt-0 lg:text-sm">
                 service radius
               </p>
             </div>
-            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:px-6 lg:py-5">
+            <div className="metal rounded-full px-3 py-3 ring-2 ring-primary lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:rounded-2xl lg:px-6 lg:py-5">
               <p className="font-display text-xl font-semibold text-accent lg:text-4xl">24/7</p>
               <p className="mt-0.5 text-[11px] text-muted-foreground lg:mt-0 lg:text-sm">
                 polar-night ready
