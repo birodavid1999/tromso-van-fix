@@ -161,14 +161,16 @@ function Index() {
       {/* Sticky top bar */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
         <div className={`${container} flex items-center justify-between py-3`}>
-          <div className="flex items-center gap-2">
-            <span className="grid size-8 place-items-center rounded-lg bg-primary font-display text-sm font-bold text-primary-foreground">
-              N
-            </span>
+          <a href="#" className="flex items-center gap-2.5">
+            <img
+              src={logoUrl}
+              alt="Nordlys Van logo"
+              className="size-10 rounded-full object-cover"
+            />
             <span className="font-display font-semibold tracking-tight">
               NORDLYS <span className="text-muted-foreground">VAN</span>
             </span>
-          </div>
+          </a>
           <nav className="flex items-center gap-4 text-[13px] font-medium text-muted-foreground lg:gap-8 lg:text-sm">
             <a href="#pricing" className="transition-colors hover:text-foreground">
               Pricing
