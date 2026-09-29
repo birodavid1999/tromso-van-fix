@@ -4,6 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Flame, Zap, MapPin, Loader2, AlertTriangle } from "lucide-react";
 import { getRoadDistance, BASE } from "@/lib/travel.functions";
+import logoUrl from "@/assets/logo-van-wrench-light.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
