@@ -62,7 +62,8 @@ const TRUMA_PRICES = [
 ];
 
 function travelFee(km: number): number {
-  return Math.max(0, km - TRAVEL_FREE_KM) * PER_KM_RATE;
+  if (km <= CALLOUT_KM) return CALLOUT_FEE;
+  return CALLOUT_FEE + (km - CALLOUT_KM) * PER_KM_RATE;
 }
 
 // Narrow column on phones, full-width canvas on desktop.
@@ -279,8 +280,9 @@ function Index() {
               Distance calculator
             </h2>
             <p className="mt-2 max-w-md text-sm text-muted-foreground text-pretty lg:mt-4 lg:text-base">
-              We set out from our workshop at {BASE.label}. The first 10 km are
-              included, then NOK {PER_KM_RATE} per road-kilometre.
+              We set out from our workshop at {BASE.label}. Within {CALLOUT_KM}{" "}
+              km the call-out is a flat NOK {CALLOUT_FEE}, then NOK {PER_KM_RATE}{" "}
+              per road-kilometre beyond that.
             </p>
           </div>
 
@@ -350,7 +352,8 @@ function Index() {
                 </span>
               </div>
               <p className="mt-2 text-xs text-muted-foreground">
-                First {TRAVEL_FREE_KM} km included · NOK {PER_KM_RATE} / km after
+                Flat NOK {CALLOUT_FEE} within {CALLOUT_KM} km · NOK {PER_KM_RATE}{" "}
+                / km beyond
                 {source === "gps" && approx && " · road distance approximated"}
               </p>
             </div>
@@ -379,8 +382,8 @@ function Index() {
               for a same-day visit.
             </p>
             <p className="mt-6 pb-16 text-xs text-muted-foreground lg:pb-0">
-              Service area: Tromsø, Bardu, and the E6 corridor. Travel fees apply
-              beyond {TRAVEL_FREE_KM} km.
+              Service area: Tromsø, Bardu, and the E6 corridor. Call-out is NOK{" "}
+              {CALLOUT_FEE} within {CALLOUT_KM} km, then NOK {PER_KM_RATE} / km.
             </p>
           </div>
 
