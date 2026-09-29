@@ -43,7 +43,8 @@ function WhatsAppIcon({ className }: { className?: string }) {
   );
 }
 
-const TRAVEL_FREE_KM = 10;
+const CALLOUT_KM = 15;
+const CALLOUT_FEE = 300;
 const PER_KM_RATE = 15;
 
 const ELECTRICAL_PRICES = [
