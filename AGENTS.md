@@ -8,3 +8,4 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+Brand: the site logo is the user's uploaded round badge (src/assets/logo-badge.png); do not replace it with generated logos.
