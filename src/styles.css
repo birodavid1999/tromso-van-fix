@@ -5,12 +5,12 @@
 @custom-variant dark (&:is(.dark *));
 
 /*
- * Design system — "Forest & Lantern".
+ * Design system — "Cream Cabin".
  *
- * Deep brown night surfaces (forest soil), bright lantern-yellow primary,
- * pine-green accent, cream text. The @theme inline block maps CSS custom
- * properties to Tailwind utilities (e.g. --color-primary -> bg-primary,
- * text-primary). All colors in oklch.
+ * Warm cream paper surfaces, deep brown ink text, mustard-yellow primary,
+ * pine-green accent. The @theme inline block maps CSS custom properties to
+ * Tailwind utilities (e.g. --color-primary -> bg-primary, text-primary).
+ * All colors in oklch.
  */
 
 @theme inline {
