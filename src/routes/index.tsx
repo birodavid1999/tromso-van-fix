@@ -109,7 +109,7 @@ function PriceCard({
         {items.map((item) => (
           <div key={item.label} className="flex items-center justify-between py-3 lg:py-4">
             <span className="text-sm text-foreground lg:text-[15px]">{item.label}</span>
-            <span className="font-display font-semibold text-primary">
+            <span className="font-display font-semibold text-ink">
               NOK {item.price.toLocaleString("nb-NO")}
             </span>
           </div>
@@ -344,7 +344,7 @@ function Index() {
                 <span className="text-xs uppercase tracking-[0.15em] text-muted-foreground">
                   Travel fee
                 </span>
-                <span className="font-display text-4xl font-bold leading-none text-primary">
+                <span className="font-display text-4xl font-bold leading-none text-ink">
                   NOK {fee.toLocaleString("nb-NO")}
                 </span>
               </div>
