@@ -10,14 +10,14 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Nordlys Van — Campervan Repair in Tromsø",
+        title: "Aurora CamperService — Campervan Repair in Tromsø",
       },
       {
         name: "description",
         content:
           "24/7 mobile campervan repair in Tromsø. 12V electrical and Truma heating repairs delivered to your layby across Nord-Norge. Clear NOK pricing and an instant travel-fee calculator.",
       },
-      { property: "og:title", content: "Nordlys Van — Campervan Repair in Tromsø" },
+      { property: "og:title", content: "Aurora CamperService — Campervan Repair in Tromsø" },
       {
         property: "og:description",
         content:
@@ -165,7 +165,7 @@ function Index() {
           <a href="#" className="flex items-center">
             <img
               src={logoUrl}
-              alt="Nordlys Van — Tromsø"
+              alt="Aurora CamperService — Tromsø"
               className="h-12 w-auto lg:h-14"
             />
           </a>
