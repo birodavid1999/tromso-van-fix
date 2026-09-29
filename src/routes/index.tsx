@@ -4,7 +4,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Phone, Flame, Zap, MapPin, Loader2, AlertTriangle } from "lucide-react";
 import { getRoadDistance, BASE } from "@/lib/travel.functions";
-import logoUrl from "@/assets/logo-van-wrench-light.png";
+import logoUrl from "@/assets/logo-badge.png";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -162,15 +162,12 @@ function Index() {
       {/* Sticky top bar */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
         <div className={`${container} flex items-center justify-between py-3`}>
-          <a href="#" className="flex items-center gap-2.5">
+          <a href="#" className="flex items-center">
             <img
               src={logoUrl}
-              alt="Nordlys Van logo"
-              className="size-10 rounded-full object-cover"
+              alt="Nordlys Van — Tromsø"
+              className="h-12 w-auto lg:h-14"
             />
-            <span className="font-display font-semibold tracking-tight">
-              NORDLYS <span className="text-muted-foreground">VAN</span>
-            </span>
           </a>
           <nav className="flex items-center gap-4 text-[13px] font-medium text-muted-foreground lg:gap-8 lg:text-sm">
             <a href="#pricing" className="transition-colors hover:text-foreground">
