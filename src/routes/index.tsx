@@ -32,7 +32,7 @@ const PHONE_URL = "tel:+4790000000";
 const PHONE_DISPLAY = "+47 900 00 000";
 
 const TRAVEL_FREE_KM = 10;
-const PER_KM_RATE = 30;
+const PER_KM_RATE = 15;
 
 const ELECTRICAL_PRICES = [
   { label: "Battery & alternator check", price: 450 },
