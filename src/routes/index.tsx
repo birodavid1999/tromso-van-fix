@@ -1,3 +1,5 @@
+// ============= Full file contents =============
+
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { MessageCircle, Phone, Flame, Zap, MapPin, Loader2, AlertTriangle } from "lucide-react";
@@ -52,13 +54,16 @@ function travelFee(km: number): number {
   return Math.max(0, km - TRAVEL_FREE_KM) * PER_KM_RATE;
 }
 
+// Narrow column on phones, full-width canvas on desktop.
+const container = "mx-auto max-w-md px-5 sm:max-w-3xl lg:max-w-6xl";
+
 function EmergencyButton() {
   return (
     <a
       href={WHATSAPP_URL}
       target="_blank"
       rel="noopener noreferrer"
-      className="flex w-full items-center justify-center gap-3 rounded-2xl bg-primary py-4 font-display text-lg font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_10px_30px_-8px_color-mix(in_oklab,var(--color-primary)_50%,transparent)]"
+      className="flex w-full items-center justify-center gap-3 rounded-2xl bg-primary py-4 font-display text-lg font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_10px_30px_-8px_color-mix(in_oklab,var(--color-primary)_50%,transparent)] lg:max-w-sm"
     >
       <span className="grid size-6 place-items-center rounded-full bg-primary-foreground/15">
         <MessageCircle className="size-4" />
@@ -80,7 +85,7 @@ function PriceCard({
   items: { label: string; price: number }[];
 }) {
   return (
-    <div className="metal mt-6 rounded-2xl p-4 ring-1 ring-border">
+    <div className="metal rounded-2xl p-4 ring-1 ring-border lg:p-6">
       <div className="flex items-center justify-between">
         <h3 className="flex items-center gap-2 font-display text-lg font-semibold text-foreground">
           <span className="text-primary">{icon}</span>
@@ -92,8 +97,8 @@ function PriceCard({
       </div>
       <div className="mt-3 divide-y divide-border">
         {items.map((item) => (
-          <div key={item.label} className="flex items-center justify-between py-3">
-            <span className="text-sm text-foreground">{item.label}</span>
+          <div key={item.label} className="flex items-center justify-between py-3 lg:py-4">
+            <span className="text-sm text-foreground lg:text-[15px]">{item.label}</span>
             <span className="font-display font-semibold text-primary">
               NOK {item.price.toLocaleString("nb-NO")}
             </span>
@@ -146,7 +151,7 @@ function Index() {
     <div className="min-h-screen bg-background font-sans text-foreground antialiased">
       {/* Sticky top bar */}
       <header className="sticky top-0 z-40 border-b border-border bg-background/90 backdrop-blur-md">
-        <div className="mx-auto flex max-w-md items-center justify-between px-5 py-3">
+        <div className={`${container} flex items-center justify-between py-3`}>
           <div className="flex items-center gap-2">
             <span className="grid size-8 place-items-center rounded-lg bg-primary font-display text-sm font-bold text-primary-foreground">
               N
@@ -155,7 +160,7 @@ function Index() {
               NORDLYS <span className="text-muted-foreground">VAN</span>
             </span>
           </div>
-          <nav className="flex items-center gap-4 text-[13px] font-medium text-muted-foreground">
+          <nav className="flex items-center gap-4 text-[13px] font-medium text-muted-foreground lg:gap-8 lg:text-sm">
             <a href="#pricing" className="transition-colors hover:text-foreground">
               Pricing
             </a>
@@ -171,43 +176,53 @@ function Index() {
 
       {/* Hero */}
       <section className="cabin-glow relative">
-        <div className="mx-auto max-w-md px-5 pt-10 pb-14">
-          <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-accent ring-1 ring-accent/30">
-            <span className="size-1.5 rounded-full bg-accent" />
-            On call · Tromsø
-          </span>
+        <div
+          className={`${container} pb-14 pt-10 lg:grid lg:grid-cols-[1.15fr_1fr] lg:items-center lg:gap-20 lg:pb-24 lg:pt-20`}
+        >
+          <div>
+            <span className="inline-flex items-center gap-2 rounded-full bg-accent/10 px-3 py-1 text-[11px] font-medium uppercase tracking-[0.15em] text-accent ring-1 ring-accent/30">
+              <span className="size-1.5 rounded-full bg-accent" />
+              On call · Tromsø
+            </span>
 
-          <h1 className="mt-5 font-display text-[52px] font-bold leading-none tracking-tight text-balance">
-            NORDLYS
-            <br />
-            <span className="text-primary">VAN</span>
-          </h1>
+            <h1 className="mt-5 font-display text-[52px] font-bold leading-none tracking-tight text-balance lg:mt-6 lg:text-[110px]">
+              NORDLYS
+              <br />
+              <span className="text-primary">VAN</span>
+            </h1>
 
-          <p className="mt-4 max-w-[34ch] text-[15px] leading-relaxed text-muted-foreground text-pretty">
-            12V electrical and Truma heating repairs for campervans, delivered to
-            your layby anywhere in Nord-Norge.
-          </p>
+            <p className="mt-4 max-w-[34ch] text-[15px] leading-relaxed text-muted-foreground text-pretty lg:text-lg">
+              12V electrical and Truma heating repairs for campervans, delivered to
+              your layby anywhere in Nord-Norge.
+            </p>
 
-          <div className="mt-7">
-            <EmergencyButton />
+            <div className="mt-7">
+              <EmergencyButton />
+            </div>
+            <p className="mt-2 text-xs text-muted-foreground lg:text-center lg:max-w-sm">
+              Average response under 15 min, 24/7
+            </p>
           </div>
-          <p className="mt-2 text-center text-xs text-muted-foreground">
-            Average response under 15 min, 24/7
-          </p>
 
           {/* Trust strip */}
-          <div className="mt-8 grid grid-cols-3 gap-2">
-            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border">
-              <p className="font-display text-xl font-semibold text-accent">12+</p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">years on the road</p>
+          <div className="mt-8 grid grid-cols-3 gap-2 lg:mt-0 lg:grid-cols-1 lg:gap-4">
+            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:px-6 lg:py-5">
+              <p className="font-display text-xl font-semibold text-accent lg:text-4xl">12+</p>
+              <p className="mt-0.5 text-[11px] text-muted-foreground lg:mt-0 lg:text-sm">
+                years on the road
+              </p>
             </div>
-            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border">
-              <p className="font-display text-xl font-semibold text-accent">80km</p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">service radius</p>
+            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:px-6 lg:py-5">
+              <p className="font-display text-xl font-semibold text-accent lg:text-4xl">80km</p>
+              <p className="mt-0.5 text-[11px] text-muted-foreground lg:mt-0 lg:text-sm">
+                service radius
+              </p>
             </div>
-            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border">
-              <p className="font-display text-xl font-semibold text-accent">24/7</p>
-              <p className="mt-0.5 text-[11px] text-muted-foreground">polar-night ready</p>
+            <div className="metal rounded-xl px-3 py-3 ring-1 ring-border lg:flex lg:items-baseline lg:justify-between lg:gap-6 lg:px-6 lg:py-5">
+              <p className="font-display text-xl font-semibold text-accent lg:text-4xl">24/7</p>
+              <p className="mt-0.5 text-[11px] text-muted-foreground lg:mt-0 lg:text-sm">
+                polar-night ready
+              </p>
             </div>
           </div>
         </div>
@@ -215,44 +230,50 @@ function Index() {
 
       {/* Pricing */}
       <section id="pricing" className="bg-card">
-        <div className="mx-auto max-w-md px-5 py-12">
+        <div className={`${container} py-12 lg:py-20`}>
           <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
             Pricing
           </p>
-          <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-balance">
+          <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-balance lg:text-5xl">
             Clear rates, no surprises
           </h2>
 
-          <PriceCard
-            title="12V Electrical"
-            tagline="Repairs"
-            icon={<Zap className="size-5" />}
-            items={ELECTRICAL_PRICES}
-          />
-          <PriceCard
-            title="Truma Heating"
-            tagline="Diagnostics"
-            icon={<Flame className="size-5" />}
-            items={TRUMA_PRICES}
-          />
+          <div className="mt-6 grid gap-6 md:grid-cols-2 lg:mt-10">
+            <PriceCard
+              title="12V Electrical"
+              tagline="Repairs"
+              icon={<Zap className="size-5" />}
+              items={ELECTRICAL_PRICES}
+            />
+            <PriceCard
+              title="Truma Heating"
+              tagline="Diagnostics"
+              icon={<Flame className="size-5" />}
+              items={TRUMA_PRICES}
+            />
+          </div>
         </div>
       </section>
 
       {/* Distance calculator */}
       <section id="calculator" className="bg-background">
-        <div className="mx-auto max-w-md px-5 py-12">
-          <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
-            Travel fee
-          </p>
-          <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-balance">
-            Distance calculator
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground text-pretty">
-            We set out from our workshop at {BASE.label}. The first 10 km are
-            included, then NOK {PER_KM_RATE} per road-kilometre.
-          </p>
+        <div
+          className={`${container} py-12 lg:grid lg:grid-cols-[1fr_1.2fr] lg:items-start lg:gap-20 lg:py-20`}
+        >
+          <div>
+            <p className="text-[11px] font-medium uppercase tracking-[0.18em] text-accent">
+              Travel fee
+            </p>
+            <h2 className="mt-2 font-display text-3xl font-semibold leading-tight tracking-tight text-balance lg:text-5xl">
+              Distance calculator
+            </h2>
+            <p className="mt-2 max-w-md text-sm text-muted-foreground text-pretty lg:mt-4 lg:text-base">
+              We set out from our workshop at {BASE.label}. The first 10 km are
+              included, then NOK {PER_KM_RATE} per road-kilometre.
+            </p>
+          </div>
 
-          <div className="metal mt-6 rounded-2xl p-5 ring-1 ring-border">
+          <div className="metal mt-6 rounded-2xl p-5 ring-1 ring-border lg:mt-0 lg:p-8">
             <button
               type="button"
               onClick={locateMe}
@@ -335,19 +356,27 @@ function Index() {
 
       {/* Footer / contact */}
       <footer id="contact" className="border-t border-border bg-card">
-        <div className="mx-auto max-w-md px-5 py-12">
-          <h2 className="font-display text-2xl font-semibold tracking-tight text-balance">
-            On the road, we're on call
-          </h2>
-          <p className="mt-2 text-sm text-muted-foreground text-pretty">
-            Serving Tromsø and the surrounding Nord-Norge roads. Call or message
-            for a same-day visit.
-          </p>
+        <div
+          className={`${container} py-12 lg:grid lg:grid-cols-[1.2fr_1fr] lg:gap-20 lg:py-16`}
+        >
+          <div>
+            <h2 className="font-display text-2xl font-semibold tracking-tight text-balance lg:text-4xl">
+              On the road, we're on call
+            </h2>
+            <p className="mt-2 max-w-md text-sm text-muted-foreground text-pretty lg:text-base">
+              Serving Tromsø and the surrounding Nord-Norge roads. Call or message
+              for a same-day visit.
+            </p>
+            <p className="mt-6 pb-16 text-xs text-muted-foreground lg:pb-0">
+              Service area: Tromsø, Bardu, and the E6 corridor. Travel fees apply
+              beyond {TRAVEL_FREE_KM} km.
+            </p>
+          </div>
 
-          <div className="mt-6 space-y-3">
+          <div className="mt-6 space-y-3 lg:mt-1">
             <a
               href={PHONE_URL}
-              className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 ring-1 ring-border"
+              className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 ring-1 ring-border transition-colors hover:bg-secondary"
             >
               <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary">
                 <Phone className="size-4" />
@@ -358,7 +387,7 @@ function Index() {
               href={WHATSAPP_URL}
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 ring-1 ring-border"
+              className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 ring-1 ring-border transition-colors hover:bg-secondary"
             >
               <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary">
                 <MessageCircle className="size-4" />
@@ -366,11 +395,6 @@ function Index() {
               <span className="text-[15px] font-medium">WhatsApp · {PHONE_DISPLAY}</span>
             </a>
           </div>
-
-          <p className="mt-6 pb-16 text-xs text-muted-foreground">
-            Service area: Tromsø, Bardu, and the E6 corridor. Travel fees apply
-            beyond {TRAVEL_FREE_KM} km.
-          </p>
         </div>
       </footer>
 
@@ -379,7 +403,7 @@ function Index() {
         href={WHATSAPP_URL}
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-primary py-3 pl-4 pr-5 font-display text-[15px] font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_12px_30px_-6px_color-mix(in_oklab,var(--color-primary)_55%,transparent)]"
+        className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-primary py-3 pl-4 pr-5 font-display text-[15px] font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_12px_30px_-6px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] lg:bottom-8 lg:left-auto lg:right-8 lg:translate-x-0"
       >
         <span className="grid size-5 shrink-0 place-items-center rounded-full bg-primary-foreground/15">
           <MessageCircle className="size-3" />
