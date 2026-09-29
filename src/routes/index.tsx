@@ -10,14 +10,14 @@ export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
       {
-        title: "Nordlys Van — Campervan Repair in Tromsø",
+        title: "Aurora CamperService — Campervan Repair in Tromsø",
       },
       {
         name: "description",
         content:
           "24/7 mobile campervan repair in Tromsø. 12V electrical and Truma heating repairs delivered to your layby across Nord-Norge. Clear NOK pricing and an instant travel-fee calculator.",
       },
-      { property: "og:title", content: "Nordlys Van — Campervan Repair in Tromsø" },
+      { property: "og:title", content: "Aurora CamperService — Campervan Repair in Tromsø" },
       {
         property: "og:description",
         content:
@@ -165,7 +165,7 @@ function Index() {
           <a href="#" className="flex items-center">
             <img
               src={logoUrl}
-              alt="Nordlys Van — Tromsø"
+              alt="Aurora CamperService — Tromsø"
               className="h-12 w-auto lg:h-14"
             />
           </a>
@@ -194,10 +194,11 @@ function Index() {
               On call · Tromsø
             </span>
 
-            <h1 className="mt-5 font-display text-[52px] font-bold leading-none tracking-tight text-balance lg:mt-6 lg:text-[110px]">
-              NORDLYS
-              <br />
-              <span className="text-primary">VAN</span>
+            <h1 className="mt-5 font-display font-bold leading-none tracking-tight text-balance lg:mt-6">
+              <span className="block text-[52px] lg:text-[110px]">AURORA</span>
+              <span className="mt-2 block text-[26px] text-primary lg:mt-3 lg:text-[58px]">
+                CAMPERSERVICE
+              </span>
             </h1>
 
             <p className="mt-4 max-w-[34ch] text-[15px] leading-relaxed text-muted-foreground text-pretty lg:text-lg">

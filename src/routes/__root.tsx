@@ -77,13 +77,13 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     meta: [
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
-      { title: "Nordlys Van" },
+      { title: "Aurora CamperService" },
       {
         name: "description",
         content:
           "Mobile campervan repair in Tromsø — 12V electrical and Truma heating repairs across Nord-Norge.",
       },
-      { property: "og:title", content: "Nordlys Van" },
+      { property: "og:title", content: "Aurora CamperService" },
       {
         property: "og:description",
         content:
