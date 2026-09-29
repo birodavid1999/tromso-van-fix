@@ -75,7 +75,7 @@ function EmergencyButton() {
       className="flex w-full items-center justify-center gap-3 rounded-2xl bg-primary py-4 font-display text-lg font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_10px_30px_-8px_color-mix(in_oklab,var(--color-primary)_50%,transparent)] lg:max-w-sm"
     >
       <span className="grid size-6 place-items-center rounded-full bg-primary-foreground/15">
-        <MessageCircle className="size-4" />
+        <WhatsAppIcon className="size-4" />
       </span>
       Emergency WhatsApp
     </a>
@@ -399,7 +399,7 @@ function Index() {
               className="flex items-center gap-3 rounded-xl bg-muted px-4 py-3 ring-1 ring-border transition-colors hover:bg-secondary"
             >
               <span className="grid size-9 shrink-0 place-items-center rounded-lg bg-primary/15 text-primary">
-                <MessageCircle className="size-4" />
+                <WhatsAppIcon className="size-4" />
               </span>
               <span className="text-[15px] font-medium">WhatsApp · {PHONE_DISPLAY}</span>
             </a>
@@ -415,7 +415,7 @@ function Index() {
         className="fixed bottom-5 left-1/2 z-50 flex -translate-x-1/2 items-center gap-2 whitespace-nowrap rounded-full bg-primary py-3 pl-4 pr-5 font-display text-[15px] font-semibold text-primary-foreground ring-1 ring-primary/40 shadow-[0_12px_30px_-6px_color-mix(in_oklab,var(--color-primary)_55%,transparent)] lg:bottom-8 lg:left-auto lg:right-8 lg:translate-x-0"
       >
         <span className="grid size-5 shrink-0 place-items-center rounded-full bg-primary-foreground/15">
-          <MessageCircle className="size-3" />
+          <WhatsAppIcon className="size-3" />
         </span>
         Emergency WhatsApp
       </a>
