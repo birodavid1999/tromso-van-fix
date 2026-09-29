@@ -194,10 +194,11 @@ function Index() {
               On call · Tromsø
             </span>
 
-            <h1 className="mt-5 font-display text-[52px] font-bold leading-none tracking-tight text-balance lg:mt-6 lg:text-[110px]">
-              NORDLYS
-              <br />
-              <span className="text-primary">VAN</span>
+            <h1 className="mt-5 font-display font-bold leading-none tracking-tight text-balance lg:mt-6">
+              <span className="block text-[52px] lg:text-[110px]">AURORA</span>
+              <span className="mt-2 block text-[26px] text-primary lg:mt-3 lg:text-[58px]">
+                CAMPERSERVICE
+              </span>
             </h1>
 
             <p className="mt-4 max-w-[34ch] text-[15px] leading-relaxed text-muted-foreground text-pretty lg:text-lg">
